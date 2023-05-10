@@ -1,0 +1,62 @@
+/*
+ * MUART_Config.h
+ *
+ *  Created on: Apr 24, 2023
+ *      Author: hp
+ */
+
+#ifndef MCAL_UART_MUART_CONFIG_H_
+#define MCAL_UART_MUART_CONFIG_H_
+
+
+/*   MUART SPEED
+ *	MUART_SINGLE_SPEED
+ *	MUART_DOUBLE_SPEED
+ *
+ **/
+#define MUART_SPEED_TYPE		MUART_SINGLE_SPEED
+
+
+/*   MUART Transmitter Reciever Enable
+ *
+ *	MUART_TX_ENABLE
+ *	MUART_RX_ENABLE
+ *	MUART_TX_RX_ENABLE
+ **/
+#define MUART_TX_RX				MUART_TX_RX_ENABLE
+
+
+/*
+ *  MUART Parity type
+ *
+ *  MUART_NO_PARITY
+ *  MUART_EVEN_PARITY
+ *  MUART_ODD_PARITY
+ */
+
+#define MUART_PARITY_TYPE		MUART_NO_PARITY
+
+
+/*
+ * MUART Data Length
+ *
+ * 	MUART_5_BIT_DATA
+ * 	MUART_6_BIT_DATA
+ * 	MUART_7_BIT_DATA
+ * 	MUART_8_BIT_DATA
+ * 	MUART_9_BIT_DATA
+ */
+
+#define MUART_DATA_LENGTH		MUART_8_BIT_DATA
+
+
+/*
+ * MUART Stop bit
+ *
+ * MUART_1_STOP_BIT
+ * MUART_2_STOP_BIT
+ */
+#define MUART_STOP_BIT			MUART_1_STOP_BIT
+
+
+#endif /* MCAL_UART_MUART_CONFIG_H_ */
