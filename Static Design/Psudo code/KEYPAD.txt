@@ -1,0 +1,17 @@
+void KEYPAD_vidInit_V2()
+{
+	* Set Col pins DIR as Output
+	* Set Row pins DIR as Output
+	* Set Col Pins VAL as HIGH
+	* Set Row Pins VAL as HIGH
+}
+
+
+Uint8_t KEYPAD_u8GetPressed_V2(void)
+{
+	* 1st loop on all Col pins
+	* set Col Pin VAL as LOW
+	* 2nd loop on all row pins which is inside 1st loop
+	* Check if any button on keypad is pressed
+	* return data
+}

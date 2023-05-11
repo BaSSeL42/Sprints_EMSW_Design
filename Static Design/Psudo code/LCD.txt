@@ -1,0 +1,79 @@
+
+typedef enum
+{
+	g_en_LCD_init = 0,
+	g_en_SEND_PULSE,
+	g_en_CLEAR_DISPLAY
+	
+	
+}en_LCDstate_t;
+
+en_LCDstate_t global_enState;
+
+
+
+void Timer_callBackFunc(void)
+{
+	1- static flag = 0
+	2- check on global_enState 
+	3- if it g_en_LCD_init --> check on flag if it equal 0 --> lcdWriteCMD(cursor home) -> AsynchDelay_ms(1) --> flag ++
+												   equal 1 --> lcdWriteCMD(Bit mode selection) -> AsynchDelay_ms(1) --> flag ++
+												   equal 2 --> lcdWriteCMD(clear dispaly) -> AsynchDelay_ms(4) --> flag ++
+												   equal 3 --> lcdWriteCMD(cursor increment) -> AsynchDelay_ms(1) --> flag ++
+												   equal 4 --> lcdWriteCMD(display on no cursor) -> AsynchDelay_ms(1) --> flag ++
+	
+	4- if it g_en_SEND_PULSE --> set pin to low
+	5- if it g_en_CLEAR_DISPLAY --> lcdWriteCMD(Cursor home)
+																								   
+
+}
+
+
+
+
+
+
+void HLCD_vidInit(void)
+{
+	* Set data pins as output 
+	* 
+	* Set RS pin as OUTPUT
+	* Set RW pin as OUTPUT
+	* Set EN pin as OUTPUT
+	* 
+	* Timer_AsynchDelay_ms(50)
+	* global_enState = g_en_LCD_init
+	* Timer_CBF(Timer_callBackFunc)
+}
+
+
+void HLCD_vidWritecmd(Uint8_t u8commandCopy)
+{
+	* Set RW pin as LOW
+	* Set RS pin as HIGH
+	* global_enState = g_en_SEND_PULSE
+	* Send CMD bytes to LCD register
+	* Timer_AsynchDelay_ms(1)
+	* Timer_CBF(Timer_callBackFunc)
+}
+
+
+void HLCD_vidWriteVal(Uint8_t u8commandCopy)
+{
+	* Set RW pin as LOW
+	* Set RS pin as LOW
+	* global_enState = g_en_SEND_PULSE
+	* Send CMD bytes to LCD register
+	* Timer_AsynchDelay_ms(1)
+	* Timer_CBF(Timer_callBackFunc)
+}
+
+
+
+void HLCD_ClrDisplay(void)
+{
+	* HLCD_vidWritecmd(HLCD_CLEAR_DISPLAY)
+	* global_enState = g_en_CLEAR_DISPLAY
+	* Timer_AsynchDelay_ms(1)
+	* Timer_CBF(Timer_callBackFunc)
+}
