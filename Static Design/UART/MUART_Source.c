@@ -20,17 +20,26 @@
 /********************************************************************************************************/
 #define F_CPU		8000000UL
 
+/********************************************************************************************************/
+/*										Global Variables and extern		     							*/
+/********************************************************************************************************/
+
+extern st_muart_t uartInfo;
 
 /********************************************************************************************************/
 /*									Function Implementation			     								*/
 /********************************************************************************************************/
 en_uartErrStat_t MUART_enInit(Uint32_t copy_u32BaudRate)
 {
+	Uint8_t local_u8BitMask;
 	en_uartErrStat_t local_enErrorStatus = MUART_OK;
 	Uint16_t local_u16UBRRReg ;
 
 	if(copy_u32BaudRate >= 2400 && copy_u32BaudRate <= 250000)
 	{
+
+		/******************************** Set UART speed and setting Baudrate **************************/
+
 #if MUART_SPEED_TYPE == MUART_SINGLE_SPEED
 
 		ClrBit(UCSRA_REG, U2X);
@@ -51,6 +60,8 @@ en_uartErrStat_t MUART_enInit(Uint32_t copy_u32BaudRate)
 
 #endif
 
+		/******************************** Enabling TX and RX **************************/
+
 #if MUART_TX_RX == MUART_TX_ENABLE
 
 		SetBit(UCSRB_REG, TXEN);
@@ -68,65 +79,20 @@ en_uartErrStat_t MUART_enInit(Uint32_t copy_u32BaudRate)
 #error "MUART_TX_RX_INVALID"
 #endif
 
-
-#if MUART_PARITY_TYPE == MUART_NO_PARITY
-
+		/******************************** Selecting Parity type **************************/
 		UCSRC_REG &= 0b11001111;
-
-#elif MUART_PARITY_TYPE == MUART_EVEN_PARITY
-
-		UCSRC_REG &= 0b11001111;
-		UCSRC_REG |= (1 << URSEL) | (2 << 4);
-
-//		ClrBit(UCSRB_REG, RUPM0);
-//		SetBit(UCSRC_REG, RUPM1);
-
-#elif MUART_PARITY_TYPE == MUART_ODD_PARITY
-
-		UCSRC_REG &= 0b11001111;
-		UCSRC_REG |= (1 << URSEL) | (3 << 4);
-
-//		SetBit(UCSRB_REG, RUPM0);
-//		SetBit(UCSRC_REG, RUPM1);
-
-#endif
+		UCSRC_REG |= (1 << URSEL) | (uartInfo.enParityType << 4);
 
 
-
-#if MUART_DATA_LENGTH == MUART_5_BIT_DATA
-
-		UCSRC_REG |= (1 << URSEL) ;
+		/********************** Selecting Data Length ************************************/
 		UCSRC_REG &= 0b11111001;
-		UCSRB_REG &= ~(1 << UCSZ2);
+		local_u8BitMask = (0b00000011 | uartInfo.enDataLength);
+		UCSRC_REG |= (1 << URSEL) | (1 << local_u8BitMask);
+		local_u8BitMask = ( (0b00000100 | uartInfo.enDataLength) >> 2);
+		UCSRB_REG &= 0b11111011;
+		UCSRB_REG |= (local_u8BitMask << 2);
 
-
-#elif MUART_DATA_LENGTH == MUART_6_BIT_DATA
-
-		UCSRC_REG &= 0b11111001;
-		UCSRC_REG |= (1 << URSEL) | (1 << UCSZ0) ;
-		UCSRB_REG &= ~(1 << UCSZ2);
-
-#elif MUART_DATA_LENGTH == MUART_7_BIT_DATA
-
-		UCSRC_REG &= 0b11111001;
-		UCSRC_REG |= (1 << URSEL) | (1 << UCSZ1) ;
-		UCSRB_REG &= ~(1 << UCSZ2);
-
-#elif MUART_DATA_LENGTH == MUART_8_BIT_DATA
-
-		UCSRC_REG &= 0b11111001;
-		UCSRC_REG |= (1 << URSEL) | (1 << UCSZ0) | (1 << UCSZ1) ;
-		UCSRB_REG &= ~(1 << UCSZ2);
-
-
-#elif MUART_DATA_LENGTH == MUART_9_BIT_DATA
-
-		UCSRC_REG &= 0b11111001;
-		UCSRC_REG |= (1 << URSEL) | (1 << UCSZ0) | (1 << UCSZ1) ;
-		UCSRB_REG |= (1 << UCSZ2);
-
-#endif
-
+		/********************** Selecting Stop bit mode ************************************/
 #if MUART_STOP_BIT == MUART_1_STOP_BIT
 
 		ClrBit(UCSRC_REG, RUSBS);
@@ -136,20 +102,10 @@ en_uartErrStat_t MUART_enInit(Uint32_t copy_u32BaudRate)
 		SetBit(UCSRC_REG, RUSBS);
 #endif
 
-		/* Asynchronous mode */
+		/********************** Asynchronous mode  ************************************/
 		ClrBit(UCSRC_REG, UMSEL);
 
-		/* Set 8-bit data */
-//		SetBit(UCSRC_REG, URSEL);
-//		SetBit(UCSRC_REG, UCSZ0);
-//		SetBit(UCSRC_REG, UCSZ1);
-//		ClrBit(UCSRB_REG, UCSZ2);
 
-		/* Set 8-bit data, Asynchronous mode and One Stop bit */
-//		UCSRC_REG = (1 << URSEL) | (3 << UCSZ0);
-
-		/* One stop bit */
-//		ClrBit(UCSRC_REG, USBS);
 	}else
 	{
 		local_enErrorStatus = MUART_NOK;

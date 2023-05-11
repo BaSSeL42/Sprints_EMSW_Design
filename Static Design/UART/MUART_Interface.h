@@ -23,17 +23,6 @@
 #define MUART_RX_ENABLE				1
 #define MUART_TX_RX_ENABLE			2
 
-/*   MUART Parity type  */
-#define MUART_NO_PARITY				0
-#define MUART_EVEN_PARITY			1
-#define MUART_ODD_PARITY			2
-
-/*   MUART Data Length  */
-#define MUART_5_BIT_DATA			0
-#define MUART_6_BIT_DATA			1
-#define MUART_7_BIT_DATA			2
-#define MUART_8_BIT_DATA			3
-#define MUART_9_BIT_DATA			4
 
 /*   MUART Stop bit   */
 #define MUART_1_STOP_BIT			0
