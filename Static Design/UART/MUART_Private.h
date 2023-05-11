@@ -2,7 +2,7 @@
  * MUART_Private.h
  *
  *  Created on: Apr 24, 2023
- *      Author: hp
+ *      Author: Bassel Yasser
  */
 
 #ifndef MCAL_UART_MUART_PRIVATE_H_
