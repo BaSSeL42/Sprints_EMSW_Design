@@ -2,7 +2,7 @@
 
 ## Author
 ### **Bassel Yasser Mahmoud**
----
+
 ---
 ## Task Brief 
 >The Basic Communication Manager module has a capability to work with different serial communication protocol using ISR with the highest possible throughput
