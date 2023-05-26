@@ -1,7 +1,7 @@
 # Basic Communication Manager Task
 
 ## Author
-```Bassel Yasser Mahmoud```
+### **Bassel Yasser Mahmoud**
 ---
 ---
 ## Task Brief 
