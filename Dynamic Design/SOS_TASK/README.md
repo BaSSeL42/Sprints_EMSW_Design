@@ -14,9 +14,8 @@
 
 **`SOS code Implementation.........👉🏻`** [SOS](./Code/)
 
-**`SOS_Design Video ` <code style="color : yellow"> __*in progress....*__ </code>
 
-
+$${\color{white} SOS \_ Design \space Video- \color{yellow} in \space Progress.... }$$
 
 ---
 
