@@ -1,19 +1,10 @@
-<span style="color:white;font-weight:900;font-size:32px;">
-<font face="Times New Roman"> 
-# Basic Communication Manager Task <br>  
-</font>
-</span>
+# Basic Communication Manager Task  
+
 
 
 ## Author
+### **Bassel Yasser Mahmoud**
 
-<span style="color:gold;font-weight:200;font-size:30px;">
-<font face="Edwardian Script ITC"> 
-Bassel Yasser Mahmoud <br>  
-</font>
-</span>
-
----
 ---
 ## Task Brief 
 >The Basic Communication Manager module has a capability to work with different serial communication protocol using ISR with the highest possible throughput
