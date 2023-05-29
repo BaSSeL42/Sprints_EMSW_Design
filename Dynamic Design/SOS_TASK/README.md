@@ -15,7 +15,7 @@
 **`SOS code Implementation.........👉🏻`** [SOS](./Code/)
 
 
-$${\color{white} SOS \_ Design \space Video- \color{yellow} in \space Progress.... }$$
+$${\color{white} SOS \space Design \space Video- \color{yellow} in \space Progress.... }$$
 
 ---
 
