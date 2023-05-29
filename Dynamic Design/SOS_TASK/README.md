@@ -1,4 +1,4 @@
-# Simple Operating System 
+# Small Operating System 
 
 ## Author
 **Bassel Yasser Mahmoud**
