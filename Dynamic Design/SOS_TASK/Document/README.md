@@ -1,3 +1,8 @@
+
+---
+## `Design Document` 👉🏻 [Here](./SOS.pdf)
+
+---
 # Static Design
 ## Layered Architecture
 ![alt text](./UML%20and%20Flowcharts/SOS_Layered.png)
