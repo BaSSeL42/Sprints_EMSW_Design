@@ -3,16 +3,12 @@
 ## `Design Document` 👉🏻 [Here](./SOS.pdf)
 
 
----
 
+---
+## Video
 $${\color{white} SOS \space Design \space Video- \color{yellow} in \space Progress.... }$$
 
 ---
-
-## Video
-
-[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/vt5fpE0bzSY)
-
 
 # Static Design
 ## Layered Architecture
