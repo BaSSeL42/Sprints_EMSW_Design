@@ -1,12 +1,13 @@
 
 ---
 ## `Design Document` 👉🏻 [Here](./SOS.pdf)
-
-
-
 ---
-## Video
-$${\color{white} SOS \space Design \space Video- \color{yellow} in \space Progress.... }$$
+
+# SOS Design Video
+
+
+
+
 
 ---
 
