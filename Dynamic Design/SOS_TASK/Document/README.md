@@ -5,9 +5,7 @@
 
 # SOS Design Video
 
-
-
-
+https://github.com/BaSSeL42/Sprints_EMSW_Design/assets/104660108/0eea94b1-4de8-42a6-9ecb-b6f7fb2c2c34
 
 ---
 
